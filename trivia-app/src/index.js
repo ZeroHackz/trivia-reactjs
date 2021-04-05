@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './App.js';
+import BannerClock from './Components/BannerClockComponent.js';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -9,16 +10,16 @@ function tick() {
   const elementLive = (
     
     <div>
-    <div className="banner-top">
-      <i>It is {new Date().toLocaleTimeString()}.</i>
-    </div>
+      <BannerClock date={new Date().toLocaleTimeString()} />
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </div>
   );
+  
   ReactDOM.render(elementLive, document.getElementById('root'));
 }
+
 
 setInterval(tick, 1000);
 // If you want to start measuring performance in your app, pass a function
