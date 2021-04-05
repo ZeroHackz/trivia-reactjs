@@ -4,7 +4,7 @@ const appHeader = (
   
   <div className="App-header">
   <img src={logo} className="App-logo" alt="logo" />
-  <p>
+  {/* <p>
     Edit <code>src/App.js</code> and save to reload.
   </p>
   <a
@@ -13,8 +13,9 @@ const appHeader = (
     target="_blank"
     rel="noopener noreferrer"
   >
-    Learn React
-  </a>
+  </a> */}
+  
+  Header
 </div>
 );
 const appBody = (<div className="App-body">Body</div>);
