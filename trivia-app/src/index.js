@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.js';
-import BannerClock from './Components/BannerClockComponent.js';
 import BannerClockClass from './Components/BannerClockComponentClass.js';
+import SignalrGlobalChat from './Components/SignalrGlobalChat.js';
 import reportWebVitals from './reportWebVitals';
 
   
 ReactDOM.render(
   <div>
     <BannerClockClass date = { new Date() }/>
+    <SignalrGlobalChat />
     <React.StrictMode>
       <App />
     </React.StrictMode>
