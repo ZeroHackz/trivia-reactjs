@@ -2,6 +2,110 @@ body{
   background-color: #000;
   color: whitesmoke;
 }
+img{
+  opacity: 0.5;
+}
+img:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+/**
+ * CSS Identifiers
+ */
+
+#top-chat {
+  float: left;
+  overflow: hidden;
+  width: 60%;
+  height: 16vh;
+}
+
+#top-chatbox-img{
+  float: left;
+  overflow: hidden;
+  max-width: 20%;
+  height: 13vh;
+  margin: auto;
+  display: block;
+}
+
+#top-chat img{
+  
+  object-fit: contain;
+  /* opacity: 1;
+  float: left;
+  max-width: 20%;
+  /* height: 13vh; 
+  max-height: 13vh; */
+}
+#top-chat img:hover{
+}
+#top-chatbox{
+  background-color: greenyellow;
+  float: left;
+  overflow: hidden;  
+  width: 80%;
+  height: 13vh;
+}
+#top-chatbox-broadcast{
+  float: left;
+  width: 20%;
+  height: 3vh;
+  align-self: center;
+  align-content: center;
+  text-align: center;
+  padding-top:0.1vh;
+}
+#top-chatbox-broadcast button{
+  align-self: center;
+  align-content: center;
+  text-align: center;
+}
+#top-chatbox-input{
+  float: left;
+  width: 80%;
+  height: 3vh;
+}
+#top-chatbox-input input{
+  padding-right:5%;
+  width:95%;
+  height: 100%;
+}
+#top-chatbox-panel{
+  font-weight: 500;
+  color: darkslateblue;
+  background-color: #eeeeee;
+  max-height: 10vh;
+  height: 10vh;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  height: auto;
+  overflow: auto;
+}
+#top-chatbox-panel-welcome{
+  font-weight: 700;
+  color: darkslateblue;
+  background-color: white;
+}
+#top-navigation{
+  background-color: #61dafb;
+  float: left;
+	overflow: hidden;
+  width: 100%;
+  height: 3vh;
+}
+#top-settings {
+  overflow: hidden;
+  width: 40%;
+  height: 16vh;
+}
+
+
+/**
+ * CSS CLasses
+ */
 
 .App {
   text-align: center;
@@ -75,7 +179,33 @@ body{
   }
 }
 
+.top-navigation-link{
+  
+  float:left;
+  margin: 0;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width: 20%;
+  height: 100%;
+  
+  align-self: center;
+  align-content: center;
+  text-align: center;
+}
 
+.top-settings-option {
+  float:left;
+  margin: 0;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width: 20%;
+  height: 100%;
+  
+  align-self: center;
+  align-content: center;
+  text-align: center;
+
+}
 
 /* Tutorial */
 
@@ -96,5 +226,42 @@ label {
 }
 
 #signalr-message-panel {
-  height: calc(100vh - 200px);
+/*   height: calc(100vh - 200px);
+ */
+}
+
+
+ /**
+ * material
+ */
+ @font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }

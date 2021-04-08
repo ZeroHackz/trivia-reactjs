@@ -17,61 +17,36 @@ class SignalrGlobalChat extends React.Component {
     
     render (){ // render the DOM
         return (
-        <div className="row">
-            <div className="col-md-4">
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="broadcast">Message</label>
+            <div id="top-chat">
+                <div id="top-chatbox-img">
+                    {/* <b className="material-icons">chat</b> */}
+                    {/* <img src="https://openclipart.org/image/2400px/svg_to_png/247319/abstract-user-flat-3.png" alt="ChatMessageIcon" /> */}
+                    <img src="https://picsum.photos/400" alt="ChatMessageIcon" />
+                    {/* <img src="https://icons.iconarchive.com/icons/pixelkit/flat-jewels/512/Chat-icon.png" alt="ChatMessageIcon" /> */}
+                </div>
+                <div id="top-chatbox">
+                    <div id="top-chatbox-panel">
+                        <pre id="signalr-message-panel">
+                            <p id="top-chat-important">Welcome to the GLOBAL TRIVA CHAT!</p>
+                            <br/>
+                        </pre>
+                    </div>
+                    <div id="top-chatbox-input">
+                        
+                        <label htmlFor="broadcast"></label>
                         <input type="text" id="broadcast" name="broadcast" />
+                                            </div>
+                    <div id="top-chatbox-broadcast">                        
+                        <button id="btn-broadcast">Broadcast</button>
                     </div>
-                    <button id="btn-broadcast">Broadcast</button>
                 </div>
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="self-message">Message</label>
-                        <input type="text" id="self-message" name="self-message" />
-                    </div>
-                    <button id="btn-self-message">Send to Self</button>
-                </div>
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="others-message">Message</label>
-                        <input type="text" id="others-message" name="others-message" />
-                    </div>
-                    <button id="btn-others-message">Send to Others</button>
-                </div>
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="group-message">Message</label>
-                        <input type="text" id="group-message" name="group-message" />
-                    </div>
-                    <div>
-                        <label htmlFor="group-for-message">Group Name</label>
-                        <input type="text" id="group-for-message" name="group-for-message" />
-                    </div>
-                    <button id="btn-group-message">Send to Group</button>
-                </div>
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="group-to-add">Group Name</label>
-                        <input type="text" id="group-to-add" name="group-to-add" />
-                    </div>
-                    <button id="btn-group-add">Add User to Group</button>
-                </div>
-                <div className="control-group">
-                    <div>
-                        <label htmlFor="group-to-remove">Group Name</label>
-                        <input type="text" id="group-to-remove" name="group-to-remove" />
-                    </div>
-                    <button id="btn-group-remove">Remove User from Group</button>
-                </div>
+                <div id="top-navigation">
+                   <div className="top-navigation-link">1</div>
+                   <div className="top-navigation-link">1</div>
+                   <div className="top-navigation-link">1</div>
+                   <div className="top-navigation-link">1</div>
+                </div> 
             </div>
-        
-            <div className="col-md-7">
-                <p>SignalR Messages:</p>
-                <pre id="signalr-message-panel"></pre>
-            </div>
-        </div>
         );
     }
     

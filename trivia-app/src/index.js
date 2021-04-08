@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../node_modules/material-design-icons/iconfont/material-icons.css';
 import './index.css';
 import App from './App.js';
 import BannerClockClass from './Components/BannerClockComponentClass.js';
-import SignalrGlobalChat from './Components/SignalrGlobalChat.js';
+import SettingsComponent from './Components/SettingsComponent.js';
+import ChatComponent from './Components/SignalrGlobalChat.js';
 import reportWebVitals from './reportWebVitals';
 
   
 ReactDOM.render(
   <div>
     <BannerClockClass date = { new Date() }/>
-    <SignalrGlobalChat />
+    <ChatComponent />
+    <SettingsComponent />
+
+    {/* <SignalrLearningHub /> */}
     <React.StrictMode>
       <App />
     </React.StrictMode>
