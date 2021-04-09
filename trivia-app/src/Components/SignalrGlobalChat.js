@@ -41,20 +41,35 @@ class SignalrGlobalChat extends React.Component {
                     </div>
                 </div>
                 <div id="top-navigation">
-                   <div className="top-navigation-link">1</div>
-                   <div className="top-navigation-link">1</div>
-                   <div className="top-navigation-link">1</div>
-                   <div className="top-navigation-link">1</div>
+                   <div className="top-navigation-link"><button>Add Group</button></div>
+                   <div className="top-navigation-link"><button>Remove Group</button></div>
+                   <div className="top-navigation-link"><button>Group Message</button></div>
+                   <div className="top-navigation-link"><button>Global Message</button></div>
                 </div> 
             </div>
         );
     }
     
     componentDidMount() {//mount component resources
-        const hubConnection = new HubConnectionBuilder()
-            .withUrl("https://localhost:5001/learningHub")
-            .configureLogging( LogLevel.Information)
-            .build();
+            // const singalrEndPoint = prompt("Do you want to use specific end-point?");
+
+        
+        let suggestEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/learningHub");
+   /*              if (suggestEndPoint!=null){ 
+                    return suggestEndPoint;
+                } else { 
+                    return "https://localhost:5001/learningHub";
+                } */
+
+            const singalrEndPoint = suggestEndPoint ?? 'https://localhost:5001/learningHub'
+            console.log("singalR End Point");
+            console.log(singalrEndPoint);
+            const hubConnection = new HubConnectionBuilder()
+                .withUrl(singalrEndPoint)
+                .configureLogging( LogLevel.Information)
+                .build();
+            
+           
 
 
             console.log('didmount');

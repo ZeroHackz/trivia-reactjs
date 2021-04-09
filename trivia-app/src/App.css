@@ -32,12 +32,12 @@ img:hover{
 
 #top-chat img{
   
-  object-fit: contain;
-  /* opacity: 1;
-  float: left;
-  max-width: 20%;
-  /* height: 13vh; 
-  max-height: 13vh; */
+  object-fit: none;
+  /* opacity: 1; */
+  /* float: left; */
+  /* max-width: 20%; */
+  /* height: 13vh; */
+  max-height: 22vh;
 }
 #top-chat img:hover{
 }

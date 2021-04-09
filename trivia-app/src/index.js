@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Prompt from 'react-dom';
 import '../node_modules/material-design-icons/iconfont/material-icons.css';
 import './index.css';
 import App from './App.js';
@@ -12,6 +13,8 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <div>
     <BannerClockClass date = { new Date() }/>
+{/*     <Prompt message={("true") => 
+        params.pathname == '/about' ? "Move away?" : true } /> */}
     <ChatComponent />
     <SettingsComponent />
 
