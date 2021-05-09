@@ -61,7 +61,8 @@ class SignalrRoomChat extends React.Component {
             // console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
                 // .withUrl(singalrEndPoint)
-                .withUrl('https://localhost:5001/learningHub')
+                // .withUrl('https://localhost:5001/learningHub')
+                .withUrl('https://localhost:44324/globalchat', { accessTokenFactory: () => this.loginToken })
                 .configureLogging( LogLevel.Information)
                 .build();
             
@@ -70,42 +71,42 @@ class SignalrRoomChat extends React.Component {
 
             console.log('didmount');
             console.log(hubConnection);
-            hubConnection.on("MessageToAll", (message) => {
-                $('#room-signalr-message-panel').prepend($('<div />').text(message));
+            hubConnection.on("MessageToAll2", (message) => {
+                $('#room-signalr-message-panel2').prepend($('<div />').text(message));
             });
 
-             hubConnection.on("ReceiveMessage", (message) => {
-                $('#room-signalr-message-panel').prepend($('<div />').text(message));
+             hubConnection.on("ReceiveMessage2", (message) => {
+                $('#room-signalr-message-panel2').prepend($('<div />').text(message));
             });
              
-            $('#btn-broadcast').click(function () {
-                var message = $('#room-broadcast').val();
+            $('#btn-broadcast2').click(function () {
+                var message = $('#room-broadcast2').val();
                 hubConnection.invoke("BroadcastMessage", message).catch(err => console.error(err.toString()));
             });
              
-            $('#btn-self-message').click(function () {
-                var message = $('#self-message').val();
+            $('#btn-self-message2').click(function () {
+                var message = $('#self-message2').val();
                 hubConnection.invoke("SendToCaller", message).catch(err => console.error(err.toString()));
             });
              
-            $('#btn-others-message').click(function () {
-                var message = $('#others-message').val();
+            $('#btn-others-message2').click(function () {
+                var message = $('#others-message2').val();
                 hubConnection.invoke("SendToOthers", message).catch(err => console.error(err.toString()));
             });
              
-            $('#btn-group-message').click(function () {
-                var message = $('#group-message').val();
+            $('#btn-group-message2').click(function () {
+                var message = $('#group-message2').val();
                 var group = $('#group-for-message').val();
                 hubConnection.invoke("SendToGroup", group, message).catch(err => console.error(err.toString()));
             });
              
-            $('#btn-group-add').click(function () {
-                var group = $('#group-to-add').val();
+            $('#btn-group-add2').click(function () {
+                var group = $('#group-to-add2').val();
                 hubConnection.invoke("AddUserToGroup", group).catch(err => console.error(err.toString()));
             });
              
-            $('#btn-group-remove').click(function () {
-                var group = $('#group-to-remove').val();
+            $('#btn-group-remove2').click(function () {
+                var group = $('#group-to-remove2').val();
                 hubConnection.invoke("RemoveUserFromGroup", group).catch(err => console.error(err.toString()));
             });
             
