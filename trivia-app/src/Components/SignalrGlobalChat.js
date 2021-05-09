@@ -69,7 +69,8 @@ class SignalrGlobalChat extends React.Component {
             // console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
                // .withUrl(singalrEndPoint)
-                .withUrl('https://localhost:44324/hubstandard')
+                // .withUrl('https://localhost:44324/hubstandard')
+                .withUrl('https://localhost:44324/globalchat', { accessTokenFactory: () => this.loginToken })
                 .configureLogging( LogLevel.Information)
                 .build();
             
@@ -80,14 +81,30 @@ class SignalrGlobalChat extends React.Component {
                 $('#signalr-message-panel').prepend($('<div />').text(message));
             });
 
-             hubConnection.on("ReceiveMessage", (message) => {
-                 console.log('received a new message');
-                 console.log(message);
-                $('#signalr-message-panel').prepend($('<div />').text(message));
+            hubConnection.on("ReceiveMessage", (receivedMessage) => {
+                console.log('received a new message');
+                console.log(receivedMessage);
+               $('#signalr-message-panel').prepend($('<div />').text(receivedMessage));
+            });
+
+            hubConnection.on("ReceiveMessageObject", (receivedMessageObject) => {
+                console.log('received a new message object');
+                console.log(receivedMessageObject);
+                let messageTimestamp =  this.dateToMessageTimestamp(receivedMessageObject.timestamp);
+
+               $('#signalr-message-panel').prepend($('<div />')
+                    .text(
+                         messageTimestamp +
+                        receivedMessageObject.displayname +': '+ 
+                        receivedMessageObject.message
+                    )
+                );
             });
              
             $('#btn-broadcast').click(function () {
                 var message = $('#broadcast').val();
+                console.log('broadcasting a new message');
+                console.log(message);
                 hubConnection.invoke("BroadcastMessage", message).catch(err => console.error(err.toString()));
             });
              
@@ -148,6 +165,14 @@ class SignalrGlobalChat extends React.Component {
 
     tick() {
         this.setState({date: new Date()});
+    }
+
+    dateToMessageTimestamp(date) {
+        let givenDate = new Date(date);
+        console.log('creating timestamp of:');
+        console.log(givenDate);
+        let timestampFormat = '['+ givenDate.toLocaleTimeString() + ']'
+        return timestampFormat;
     }
 
     HubCallback() {
