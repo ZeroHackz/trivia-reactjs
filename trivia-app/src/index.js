@@ -6,7 +6,9 @@ import './index.css';
 import App from './App.js';
 import BannerClockClass from './Components/BannerClockComponentClass.js';
 import SettingsComponent from './Components/SettingsComponent.js';
-import ChatComponent from './Components/SignalrGlobalChat.js';
+import GlobalChatComponent from './Components/SignalrGlobalChat.js';
+import MainComponent from './Components/MainComponent.js';
+import MainChatComponent from './Components/SignalrRoomChat';
 import reportWebVitals from './reportWebVitals';
 
   
@@ -15,13 +17,18 @@ ReactDOM.render(
     <BannerClockClass date = { new Date() }/>
 {/*     <Prompt message={("true") => 
         params.pathname == '/about' ? "Move away?" : true } /> */}
-    <ChatComponent />
+    <GlobalChatComponent />
     <SettingsComponent />
 
+    
+    <MainComponent />
+    <MainChatComponent />
+    
+
     {/* <SignalrLearningHub /> */}
-    <React.StrictMode>
+    {/* <React.StrictMode>
       <App />
-    </React.StrictMode>
+    </React.StrictMode> */}
   </div>, 
   document.getElementById('root')
 );

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../treevia_logo.jpg';
 import { HubConnection, LogLevel, HubConnectionBuilder} from '@aspnet/signalr';
 import $ from 'jquery';
 
 
-class SignalrGlobalChat extends React.Component {
+class SignalrRoomChat extends React.Component {
     constructor(props){//constructor
         super(props);//super class props
         this.state = { //initial state
@@ -18,37 +17,30 @@ class SignalrGlobalChat extends React.Component {
     
     render (){ // render the DOM
         return (
-            <div id="top-chat">
-                <div id="top-chatbox-img">
+            <div id="main-chat">
+                <div id="room-chatbox-top">
+                    TopBanner
                     {/* <b className="material-icons">chat</b> */}
                     {/* <img src="https://openclipart.org/image/2400px/svg_to_png/247319/abstract-user-flat-3.png" alt="ChatMessageIcon" /> */}
                     {/* <img src="https://picsum.photos/400" alt="ChatMessageIcon" /> */}
-                    <img className="top-chatbox-logo"src={logo} alt="ChatMessageIcon" />
-                    
                     {/* <img src="https://icons.iconarchive.com/icons/pixelkit/flat-jewels/512/Chat-icon.png" alt="ChatMessageIcon" /> */}
                 </div>
-                <div id="top-chatbox">
-                    <div id="top-chatbox-panel">
-                        <pre id="signalr-message-panel">
-                            <p id="top-chat-important">Welcome to the GLOBAL TRIVA CHAT!</p>
+                <div id="room-chatbox">
+                    <div id="room-chatbox-panel">
+                        <pre id="room-signalr-message-panel">
+                            <p id="room-chat-important">Welcome to the Room chat.</p>
                             <br/>
                         </pre>
                     </div>
-                    <div id="top-chatbox-input">
+                    <div id="room-chatbox-input">
                         
-                        <label htmlFor="broadcast"></label>
-                        <input type="text" id="broadcast" name="broadcast" />
-                                            </div>
-                    <div id="top-chatbox-broadcast">                        
-                        <button id="btn-broadcast">Broadcast</button>
+                        <label htmlFor="room-broadcast"></label>
+                        <input type="text" id="room-broadcast" name="broadcast" />
+                    </div>
+                    <div id="room-chatbox-broadcast">                        
+                        <button id="room-btn-broadcast">Broadcast</button>
                     </div>
                 </div>
-                <div id="top-navigation">
-                   <div className="top-navigation-link"><button>Add Group</button></div>
-                   <div className="top-navigation-link"><button>Remove Group</button></div>
-                   <div className="top-navigation-link"><button>Group Message</button></div>
-                   {/* <div className="top-navigation-link"><button> PM</button></div> */}
-                </div> 
             </div>
         );
     }
@@ -57,37 +49,37 @@ class SignalrGlobalChat extends React.Component {
             // const singalrEndPoint = prompt("Do you want to use specific end-point?");
 
         
-        // let suggestEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/learningHub");
+        //let suggestEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/learningHub");
    /*              if (suggestEndPoint!=null){ 
                     return suggestEndPoint;
                 } else { 
                     return "https://localhost:5001/learningHub";
                 } */
 
-            // const singalrEndPoint = suggestEndPoint ?? 'https://localhost:5001/learningHub'
+            // const singalrEndPoint = 'https://localhost:5001/learningHub'
             // console.log("singalR End Point");
             // console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
-               // .withUrl(singalrEndPoint)
-                .withUrl('https://localhost:44324/hubstandard')
+                // .withUrl(singalrEndPoint)
+                .withUrl('https://localhost:5001/learningHub')
                 .configureLogging( LogLevel.Information)
                 .build();
             
-        
+           
+
+
             console.log('didmount');
             console.log(hubConnection);
             hubConnection.on("MessageToAll", (message) => {
-                $('#signalr-message-panel').prepend($('<div />').text(message));
+                $('#room-signalr-message-panel').prepend($('<div />').text(message));
             });
 
              hubConnection.on("ReceiveMessage", (message) => {
-                 console.log('received a new message');
-                 console.log(message);
-                $('#signalr-message-panel').prepend($('<div />').text(message));
+                $('#room-signalr-message-panel').prepend($('<div />').text(message));
             });
              
             $('#btn-broadcast').click(function () {
-                var message = $('#broadcast').val();
+                var message = $('#room-broadcast').val();
                 hubConnection.invoke("BroadcastMessage", message).catch(err => console.error(err.toString()));
             });
              
@@ -164,4 +156,4 @@ class SignalrGlobalChat extends React.Component {
     }
 }
 
-export default SignalrGlobalChat;
+export default SignalrRoomChat;

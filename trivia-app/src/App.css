@@ -1,6 +1,24 @@
+/*
+Color Pallette
+grayish  : 434750
+bordeauxish : #50434d
+goldish : #504c43
+greenish : #435046
+*/
+
 body{
-  background-color: #000;
+  background-color: #434750;
   color: whitesmoke;
+}
+button {
+    color: orange;
+    background-color: #50434d;
+    padding: 1px;
+}
+button:hover {
+    color: white;
+    background-color: #50434d;
+    padding: 1px;
 }
 img{
   opacity: 0.5;
@@ -13,6 +31,60 @@ img:hover{
 /**
  * CSS Identifiers
  */
+
+#main {
+  float: left;
+  width: 70%;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
+  background-color: purple;
+
+}
+
+#main-chat {
+  float: left;
+  width: 30%;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
+  background-color: sandybrown;
+
+}
+
+#main-list {
+  width: 100%;
+  height:100%;
+  margin: 0;
+  padding: 0;
+  background-color: #767980;
+  list-style-type: none;  
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+
+#room-chatbox-broadcast {
+  
+}
+
+#room-chatbox-panel{
+  font-weight: 500;
+  color: darkslateblue;
+  background-color: #eeeeee;
+  max-height: 70vh;
+  height: 70vh;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  height: auto;
+  overflow: auto;
+}
+
+#room-signalr-message-panel{
+  height: 70vh;
+  max-height: 70vh;
+}
 
 #top-chat {
   float: left;
@@ -32,17 +104,17 @@ img:hover{
 
 #top-chat img{
   
-  object-fit: none;
+  object-fit: initial ;
   /* opacity: 1; */
   /* float: left; */
   /* max-width: 20%; */
   /* height: 13vh; */
-  max-height: 22vh;
+  max-height: 12vh;
 }
 #top-chat img:hover{
 }
 #top-chatbox{
-  background-color: greenyellow;
+  background-color: #435046;
   float: left;
   overflow: hidden;  
   width: 80%;
@@ -90,11 +162,12 @@ img:hover{
   background-color: white;
 }
 #top-navigation{
-  background-color: #61dafb;
+  /* background-color: #61dafb; */
   float: left;
 	overflow: hidden;
   width: 100%;
   height: 3vh;
+  
 }
 #top-settings {
   overflow: hidden;
@@ -127,11 +200,6 @@ img:hover{
   justify-content: center;
   font-size: calc(10px + 1vmin);
   color: rgb(189, 189, 189);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -170,13 +238,44 @@ img:hover{
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-list-item {
+  /* background-color: whitesmoke; */
+  height: 6vh;
+  margin: 0;
+  
+}
+
+.main-list-item-panel {
+  background-color: #806d43;
+  border-radius: 0.1vh;
+  border: 2px solid #50434d;
+  border-radius: 5px;
+  border-style: dashed;
+  width: 100%;
+  height: 90%;
+  /* margin-right: 5%;
+  margin-left: 5%; */
+  
+}
+
+.main-list-item-panel-label {
+  float:left;
+  width: 60%;
+  color: #000;
+  
+}
+
+.main-list-item-panel-button {
+  float:left;
+  width: 40%;
+  color: rgb(114, 35, 218);
+  
+}
+
+.main-list-item-panel-button button{
+  color: orange;
+  background-color: #50434d;
+  
 }
 
 .top-navigation-link{
@@ -207,9 +306,28 @@ img:hover{
 
 }
 
-/* Tutorial */
+/* Transformations */
 
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+  .top-chatbox-logo {
+    animation: App-logo-spin infinite 20s linear;
+
+  }
+}
  
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
