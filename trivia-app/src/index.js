@@ -21,13 +21,7 @@ ReactDOM.render(
     <SettingsComponent />
 
     
-    <div id="main">
-      <ul id="main-list">
-
-        <MainComponent />
-
-      </ul>
-    </div>
+    <MainComponent />
     <MainChatComponent />
     
 

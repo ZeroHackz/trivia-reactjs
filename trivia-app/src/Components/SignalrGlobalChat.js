@@ -54,23 +54,11 @@ class SignalrGlobalChat extends React.Component {
     }
     
     componentDidMount() {//mount component resources
-            // const singalrEndPoint = prompt("Do you want to use specific end-point?");
-
-        
-        // let suggestEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/learningHub");
-   /*              if (suggestEndPoint!=null){ 
-                    return suggestEndPoint;
-                } else { 
-                    return "https://localhost:5001/learningHub";
-                } */
-
-            // const singalrEndPoint = suggestEndPoint ?? 'https://localhost:5001/learningHub'
-            // console.log("singalR End Point");
-            // console.log(singalrEndPoint);
+            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/hubstandard");
+            console.log("singalR End Point");
+            console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
-               // .withUrl(singalrEndPoint)
-                // .withUrl('https://localhost:44324/hubstandard')
-                .withUrl('https://trivia-api20210516141229.azurewebsites.net:44324/globalchat', { accessTokenFactory: () => this.loginToken })
+                .withUrl(singalrEndPoint, { accessTokenFactory: () => this.loginToken })
                 .configureLogging( LogLevel.Information)
                 .build();
             
@@ -178,7 +166,6 @@ class SignalrGlobalChat extends React.Component {
     HubCallback() {
 
     }
-    
     asyncStateUpdate() {//make use of the previous state 
         this.setState(//shallow merge object into current state object
             (state, props) => (
