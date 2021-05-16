@@ -62,7 +62,7 @@ class SignalrRoomChat extends React.Component {
             const hubConnection = new HubConnectionBuilder()
                 // .withUrl(singalrEndPoint)
                 // .withUrl('https://localhost:5001/learningHub')
-                .withUrl('https://localhost:44324/globalchat', { accessTokenFactory: () => this.loginToken })
+                .withUrl('https://trivia-api20210516141229.azurewebsites.net:44324/globalchat', { accessTokenFactory: () => this.loginToken })
                 .configureLogging( LogLevel.Information)
                 .build();
             

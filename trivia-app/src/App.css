@@ -48,7 +48,7 @@ img:hover{
   height: 80vh;
   max-height: 80vh;
   overflow: hidden;
-  background-color: sandybrown;
+  background-color: #435046;
 
 }
 
@@ -250,7 +250,7 @@ img:hover{
   border-radius: 0.1vh;
   border: 2px solid #50434d;
   border-radius: 5px;
-  border-style: dashed;
+  /* border-style: dashed; */
   width: 100%;
   height: 90%;
   /* margin-right: 5%;
@@ -261,7 +261,7 @@ img:hover{
 .main-list-item-panel-label {
   float:left;
   width: 60%;
-  color: #000;
+  color: #fff;
   
 }
 

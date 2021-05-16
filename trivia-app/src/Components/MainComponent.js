@@ -12,181 +12,25 @@ class BannerClockClass extends React.Component {
     }
     
     render (){ // render the DOM
-        return (
-            <div id="main">
-               <ul id="main-list">
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently Online .</div>
-                           <div className="main-list-item-panel-button"><button onClick="/lobby/1337" > Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">
-                               Lobby #1000 - Currently in Session .
-                               </div>
-                           <div className="main-list-item-panel-button">
-                               <button> Join </button>
-                               <button> Spectate </button>
-                               <button> Report! </button>
+
+        let renderedDom = []; 
+
+        for (let index = 0; index < 40; index++) {
+            renderedDom.push(
+                    <li className="main-list-item">
+                        <div className="main-list-item-panel">
+                            <div className="main-list-item-panel-label">Lobby # { index +954} - Currently in Session .</div>
+                            <div className="main-list-item-panel-button">
+                                <button> Join </button>
+                                <button> Spectate </button>
+                                <button> Report! </button>
                             </div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                   <li className="main-list-item">
-                       <div className="main-list-item-panel">
-                           <div className="main-list-item-panel-label">Lobby #1000 - Currently in Session .</div>
-                           <div className="main-list-item-panel-button"><button> Join </button></div>
-                       </div>
-                   </li>
-                </ul>
-                {/* <img src={TreeviaLogo} className="Treevia-logo" alt="Treevia" /> */}
-            </div>
-        );
+                        </div>
+                    </li>
+            );
+        }
+
+        return (renderedDom);
     }
     
     componentDidMount() {//mount component resources

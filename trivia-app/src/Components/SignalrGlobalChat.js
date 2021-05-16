@@ -70,7 +70,7 @@ class SignalrGlobalChat extends React.Component {
             const hubConnection = new HubConnectionBuilder()
                // .withUrl(singalrEndPoint)
                 // .withUrl('https://localhost:44324/hubstandard')
-                .withUrl('https://localhost:44324/globalchat', { accessTokenFactory: () => this.loginToken })
+                .withUrl('https://trivia-api20210516141229.azurewebsites.net:44324/globalchat', { accessTokenFactory: () => this.loginToken })
                 .configureLogging( LogLevel.Information)
                 .build();
             
@@ -178,6 +178,7 @@ class SignalrGlobalChat extends React.Component {
     HubCallback() {
 
     }
+    
     asyncStateUpdate() {//make use of the previous state 
         this.setState(//shallow merge object into current state object
             (state, props) => (
