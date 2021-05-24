@@ -56,7 +56,7 @@ class SignalrGlobalChat extends React.Component {
     componentDidMount() {//mount component resources
             // const singalrEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/hubstandard");
             // const singalrEndPoint = prompt("Do you want to use specific end-point?","http://rortzxzsybf4m.service.signalr.net:500");
-            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://rortzxzsybf4m.service.signalr.net:5001");
+            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://rortzxzsybf4m.service.signalr.net:5001/hubstandard");
             console.log("singalR End Point");
             console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
