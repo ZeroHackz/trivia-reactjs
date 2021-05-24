@@ -54,7 +54,9 @@ class SignalrGlobalChat extends React.Component {
     }
     
     componentDidMount() {//mount component resources
-            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/hubstandard");
+            // const singalrEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/hubstandard");
+            // const singalrEndPoint = prompt("Do you want to use specific end-point?","http://rortzxzsybf4m.service.signalr.net:500");
+            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://rortzxzsybf4m.service.signalr.net:5001");
             console.log("singalR End Point");
             console.log(singalrEndPoint);
             const hubConnection = new HubConnectionBuilder()
@@ -62,6 +64,8 @@ class SignalrGlobalChat extends React.Component {
                 .configureLogging( LogLevel.Information)
                 .build();
             
+            console.log("azure_test");
+            bindConnectionMessage(connection);
         
             console.log('didmount');
             console.log(hubConnection);
@@ -125,7 +129,7 @@ class SignalrGlobalChat extends React.Component {
             async function start() {
                 try {
                     await hubConnection.start();
-                    console.log('connected');
+                    console.log('connected with singalR Eindpoint');
                 } catch (err) {
                     console.log(err);
                     setTimeout(() => start(), 5000);
@@ -161,6 +165,17 @@ class SignalrGlobalChat extends React.Component {
         console.log(givenDate);
         let timestampFormat = '['+ givenDate.toLocaleTimeString() + ']'
         return timestampFormat;
+    }
+
+    bindConnectionMessage(connection) {
+        let messageCallback = function (name, message) {
+            if (!message) return;
+            // deal with the message
+                alert("message received:" + message);
+            };
+            // Create a function that the hub can call to broadcast messages.
+            connection.on('BroadcastMessage', messageCallback);
+            connection.on('Echo', messageCallback);
     }
 
     HubCallback() {
