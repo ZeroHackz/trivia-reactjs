@@ -65,7 +65,18 @@ class SignalrGlobalChat extends React.Component {
                 .build();
             
             console.log("azure_test");
-            bindConnectionMessage(connection);
+
+            function bindConnectionMessage(connection) {
+                let messageCallback = function (name, message) {
+                    if (!message) return;
+                    // deal with the message
+                        alert("message received:" + message);
+                    };
+                    // Create a function that the hub can call to broadcast messages.
+                    connection.on('BroadcastMessage', messageCallback);
+                    connection.on('Echo', messageCallback);
+            }
+            bindConnectionMessage(hubConnection);
         
             console.log('didmount');
             console.log(hubConnection);
@@ -165,17 +176,6 @@ class SignalrGlobalChat extends React.Component {
         console.log(givenDate);
         let timestampFormat = '['+ givenDate.toLocaleTimeString() + ']'
         return timestampFormat;
-    }
-
-    bindConnectionMessage(connection) {
-        let messageCallback = function (name, message) {
-            if (!message) return;
-            // deal with the message
-                alert("message received:" + message);
-            };
-            // Create a function that the hub can call to broadcast messages.
-            connection.on('BroadcastMessage', messageCallback);
-            connection.on('Echo', messageCallback);
     }
 
     HubCallback() {
