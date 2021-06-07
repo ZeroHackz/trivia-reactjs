@@ -11,7 +11,9 @@ class SignalrGlobalChat extends React.Component {
             date: new Date(),
             hubConnection: null,
             logLevel :null,
-            hubConnectionMessage: '',            
+            loggedIn : false,
+            hubConnectionMessage: '',     
+            dev : true,       
         };
     }
     
@@ -34,14 +36,26 @@ class SignalrGlobalChat extends React.Component {
                             <br/>
                         </pre>
                     </div>
-                    <div id="top-chatbox-input">
-                        
-                        <label htmlFor="broadcast"></label>
-                        <input type="text" id="broadcast" name="broadcast" />
-                                            </div>
-                    <div id="top-chatbox-broadcast">                        
-                        <button id="btn-broadcast">Broadcast</button>
-                    </div>
+                    <template ngIf="loggedIn; else notLoggedIn">
+                        <div id="top-chatbox-input">
+                            
+                            <label htmlFor="broadcast"></label>
+                            <input type="text" id="broadcast" name="broadcast" />
+                        </div>
+                        <div id="top-chatbox-broadcast">                        
+                            <button id="btn-broadcast">Broadcast</button>
+                        </div>
+                    </template>
+                    <ng-template notLoggedIn >
+                        <div id="top-chatbox-input">
+                            <center>
+                            Log in <u>here</u> to sent a message too!
+                            </center>
+                        </div>
+                        <div id="top-chatbox-broadcast">                        
+                            Login-symbol
+                        </div>
+                    </ng-template>
                 </div>
                 <div id="top-navigation">
                    <div className="top-navigation-link"><button>Add Group</button></div>
@@ -54,17 +68,21 @@ class SignalrGlobalChat extends React.Component {
     }
     
     componentDidMount() {//mount component resources
-            // const singalrEndPoint = prompt("Do you want to use specific end-point?","https://localhost:5001/hubstandard");
-            // const singalrEndPoint = prompt("Do you want to use specific end-point?","http://rortzxzsybf4m.service.signalr.net:500");
-            const singalrEndPoint = prompt("Do you want to use specific end-point?","https://rortzxzsybf4m.service.signalr.net:5001/hubstandard");
-            console.log("singalR End Point");
-            console.log(singalrEndPoint);
-            const hubConnection = new HubConnectionBuilder()
-                .withUrl(singalrEndPoint, { accessTokenFactory: () => this.loginToken })
-                .configureLogging( LogLevel.Information)
-                .build();
-            
-            console.log("azure_test");
+        const signalrDomain = "https://i458461core.venus.fhict.nl";        
+        if(this.dev) {
+            const signalrDomain = "https://localhost:5001";
+            // const domain = "https://localhost:44324";
+        }
+        
+        const signalrEndpoint = signalrDomain+"/hubstandard";
+        //const signalrEndpoint = prompt(signalrDomain+"/hubstandard");
+        console.log("GlobalChatComponent SignalR");
+        console.log(signalrEndpoint);
+        const hubConnection = new HubConnectionBuilder()
+            .withUrl(signalrEndpoint, { accessTokenFactory: () => this.loginToken })
+            .configureLogging( LogLevel.Information)
+            .build();
+        
 
             function bindConnectionMessage(connection) {
                 let messageCallback = function (name, message) {
@@ -180,6 +198,10 @@ class SignalrGlobalChat extends React.Component {
 
     HubCallback() {
 
+    }
+
+    isLoggedIn() {
+        return false;
     }
     asyncStateUpdate() {//make use of the previous state 
         this.setState(//shallow merge object into current state object

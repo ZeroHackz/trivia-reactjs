@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import TreeviaLogo from '../treevia_logo.jpg';
 import signalrglobalchat from './SignalrGlobalChat';
+import { HubConnection, LogLevel, HubConnectionBuilder} from '@aspnet/signalr';
+import $ from 'jquery';
 
 
 class BannerClockClass extends React.Component {
     constructor(props){//constructor
         super(props);//super class props
         this.state = { //initial state
-            date: new Date()
+            date: new Date(),
+            dev : true,
         };
     }
     
@@ -18,7 +21,7 @@ class BannerClockClass extends React.Component {
                    <li className="main-list-item">
                        <div className="main-list-item-panel">
                            <div className="main-list-item-panel-label">Lobby #1000 - Currently Online .</div>
-                           <div className="main-list-item-panel-button"><button onClick="/lobby/1337" > Join </button></div>
+                           <div className="main-list-item-panel-button"><button href="/lobby/1337" > Join </button></div>
                        </div>
                    </li>
                    <li className="main-list-item">
@@ -190,6 +193,31 @@ class BannerClockClass extends React.Component {
     }
     
     componentDidMount() {//mount component resources
+        //Notify User if there is a new lobby.//mount component resources
+        const signalrDomain = "https://i458461core.venus.fhict.nl";        
+        if(this.dev) {
+            const signalrDomain = "https://localhost:5001";
+            // const domain = "https://localhost:44324";
+        }
+        
+        const signalrEndpoint = signalrDomain+"/hubstandard";
+        console.log("MainComponent SignalR Connection");
+        console.log(signalrEndpoint);
+        const hubConnection = new HubConnectionBuilder()
+            .withUrl(signalrEndpoint, { accessTokenFactory: () => this.loginToken })
+            .configureLogging( LogLevel.Information)
+            .build();
+        function bindConnectionMessage(connection) {
+            let messageCallback = function (name, message) {
+                if (!message) return;
+                // deal with the message
+                    alert("message received:" + message);
+                };
+                // Create a function that the hub can call to broadcast messages.
+                connection.on('BroadcastMessage', messageCallback);
+                connection.on('Echo', messageCallback);
+        }
+        bindConnectionMessage(hubConnection);
         this.timerID = setInterval(
             () => this.tick(),
             1000
