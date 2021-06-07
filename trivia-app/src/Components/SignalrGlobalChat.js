@@ -11,13 +11,12 @@ class SignalrGlobalChat extends React.Component {
             date: new Date(),
             hubConnection: null,
             logLevel :null,
-            loggedIn : false,
+            loggedIn : true,
             hubConnectionMessage: '',     
             dev : true,       
         };
     }
-    
-    
+        
     render (){ // render the DOM
         return (
             <div id="top-chat">
@@ -36,7 +35,9 @@ class SignalrGlobalChat extends React.Component {
                             <br/>
                         </pre>
                     </div>
-                    <template ngIf="loggedIn; else notLoggedIn">
+                    <template ngif="loggedIn; then loggedInView else notloggedInView">
+                        </template>
+                        <ng-template loggedInView>
                         <div id="top-chatbox-input">
                             
                             <label htmlFor="broadcast"></label>
@@ -45,8 +46,8 @@ class SignalrGlobalChat extends React.Component {
                         <div id="top-chatbox-broadcast">                        
                             <button id="btn-broadcast">Broadcast</button>
                         </div>
-                    </template>
-                    <ng-template notLoggedIn >
+                    </ng-template>
+                    <ng-template notloggedInView >
                         <div id="top-chatbox-input">
                             <center>
                             Log in <u>here</u> to sent a message too!
@@ -68,109 +69,81 @@ class SignalrGlobalChat extends React.Component {
     }
     
     componentDidMount() {//mount component resources
-        const signalrDomain = "https://i458461core.venus.fhict.nl";        
+        const signalrDomain = "https://i458461core.venus.fhict.nl/";   
+        const signalrHub = "hubstandard";
+        
         if(this.dev) {
-            const signalrDomain = "https://localhost:5001";
+            const signalrDomain = "https://localhost:5001/";
             // const domain = "https://localhost:44324";
         }
+
         
-        const signalrEndpoint = signalrDomain+"/hubstandard";
-        //const signalrEndpoint = prompt(signalrDomain+"/hubstandard");
-        console.log("GlobalChatComponent SignalR");
-        console.log(signalrEndpoint);
         const hubConnection = new HubConnectionBuilder()
-            .withUrl(signalrEndpoint, { accessTokenFactory: () => this.loginToken })
-            .configureLogging( LogLevel.Information)
-            .build();
+        .withUrl(signalrDomain+signalrHub, { accessTokenFactory: () => this.loginToken })
+        .configureLogging(LogLevel.Information)
+        .build();
         
-
-            function bindConnectionMessage(connection) {
-                let messageCallback = function (name, message) {
-                    if (!message) return;
-                    // deal with the message
-                        alert("message received:" + message);
-                    };
-                    // Create a function that the hub can call to broadcast messages.
-                    connection.on('BroadcastMessage', messageCallback);
-                    connection.on('Echo', messageCallback);
+        hubConnection.on("ReceiveMessage", (object) => {
+            console.log("Message received");
+            console.log(object);
+            var objectSender = '-reactjs';
+            if ('senderConnectionId' in object && object.senderConnectionId !== undefined) {
+                objectSender = object.senderConnectionId;
             }
-            bindConnectionMessage(hubConnection);
+            if ('identity' in object && object.identity.isAuthenticated && object.identity.name === undefined) {
+                objectSender = object.identity.name;
+            }
+            var objectMessage = object.message;
+            var chatSyntax = "anonymous[" + objectSender + "]" + ": " + objectMessage;
+            $('#signalr-message-panel').prepend($('<div />').text(chatSyntax));
+        });
         
-            console.log('didmount');
-            console.log(hubConnection);
-            hubConnection.on("MessageToAll", (message) => {
-                $('#signalr-message-panel').prepend($('<div />').text(message));
-            });
-
-            hubConnection.on("ReceiveMessage", (receivedMessage) => {
-                console.log('received a new message');
-                console.log(receivedMessage);
-               $('#signalr-message-panel').prepend($('<div />').text(receivedMessage));
-            });
-
-            hubConnection.on("ReceiveMessageObject", (receivedMessageObject) => {
-                console.log('received a new message object');
-                console.log(receivedMessageObject);
-                let messageTimestamp =  this.dateToMessageTimestamp(receivedMessageObject.timestamp);
-
-               $('#signalr-message-panel').prepend($('<div />')
-                    .text(
-                         messageTimestamp +
-                        receivedMessageObject.displayname +': '+ 
-                        receivedMessageObject.message
-                    )
-                );
-            });
-             
-            $('#btn-broadcast').click(function () {
-                var message = $('#broadcast').val();
-                console.log('broadcasting a new message');
-                console.log(message);
-                hubConnection.invoke("BroadcastMessage", message).catch(err => console.error(err.toString()));
-            });
-             
-            $('#btn-self-message').click(function () {
-                var message = $('#self-message').val();
-                hubConnection.invoke("SendToCaller", message).catch(err => console.error(err.toString()));
-            });
-             
-            $('#btn-others-message').click(function () {
-                var message = $('#others-message').val();
-                hubConnection.invoke("SendToOthers", message).catch(err => console.error(err.toString()));
-            });
-             
-            $('#btn-group-message').click(function () {
-                var message = $('#group-message').val();
-                var group = $('#group-for-message').val();
-                hubConnection.invoke("SendToGroup", group, message).catch(err => console.error(err.toString()));
-            });
-             
-            $('#btn-group-add').click(function () {
-                var group = $('#group-to-add').val();
-                hubConnection.invoke("AddUserToGroup", group).catch(err => console.error(err.toString()));
-            });
-             
-            $('#btn-group-remove').click(function () {
-                var group = $('#group-to-remove').val();
-                hubConnection.invoke("RemoveUserFromGroup", group).catch(err => console.error(err.toString()));
-            });
-            
-            async function start() {
-                try {
-                    await hubConnection.start();
-                    console.log('connected with singalR Eindpoint');
-                } catch (err) {
-                    console.log(err);
-                    setTimeout(() => start(), 5000);
-                }
-            };
-             
-            hubConnection.onclose(async () => {
-                await start();
-            });
-             
-            start();
-
+        $('#btn-broadcast').click(function () {
+            var message = $('#broadcast').val();
+            hubConnection.invoke("BroadcastMessage", message).catch(err => console.error(err.toString()));
+        });
+        
+        $('#btn-self-message').click(function () {
+            var message = $('#self-message').val();
+            hubConnection.invoke("SendToCaller", message).catch(err => console.error(err.toString()));
+        });
+        
+        $('#btn-others-message').click(function () {
+            var message = $('#others-message').val();
+            hubConnection.invoke("SendToOthers", message).catch(err => console.error(err.toString()));
+        });
+        
+        $('#btn-group-message').click(function () {
+            var message = $('#group-message').val();
+            var group = $('#group-for-message').val();
+            hubConnection.invoke("SendToGroup", group, message).catch(err => console.error(err.toString()));
+        });
+        
+        $('#btn-group-add').click(function () {
+            var group = $('#group-to-add').val();
+            hubConnection.invoke("AddUserToGroup", group).catch(err => console.error(err.toString()));
+        });
+        
+        $('#btn-group-remove').click(function () {
+            var group = $('#group-to-remove').val();
+            hubConnection.invoke("RemoveUserFromGroup", group).catch(err => console.error(err.toString()));
+        });
+        
+        async function start() {
+            try {
+                await hubConnection.start();
+                console.log('connected');
+            } catch (err) {
+                console.log(err);
+                setTimeout(() => start(), 5000);
+            }
+        };
+        
+        hubConnection.onclose(async () => {
+            await start();
+        });
+        
+        start();
 
         this.timerID = setInterval(
             () => this.tick(),
@@ -194,10 +167,6 @@ class SignalrGlobalChat extends React.Component {
         console.log(givenDate);
         let timestampFormat = '['+ givenDate.toLocaleTimeString() + ']'
         return timestampFormat;
-    }
-
-    HubCallback() {
-
     }
 
     isLoggedIn() {
