@@ -82,6 +82,8 @@ class SignalrGlobalChat extends React.Component {
         .withUrl(signalrDomain+signalrHub, { accessTokenFactory: () => this.loginToken })
         .configureLogging(LogLevel.Information)
         .build();
+
+        hubConnection.Credentials = true;
         
         hubConnection.on("ReceiveMessage", (object) => {
             console.log("Message received");
