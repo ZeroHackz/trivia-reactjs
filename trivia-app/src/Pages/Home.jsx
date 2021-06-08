@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 function Home() {
   return (
@@ -8,24 +9,30 @@ function Home() {
           <div className="col-lg-7">
               <h1> Game modes </h1>
               <h2>Single Player</h2>
-            <img
-              className="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
-              alt=""
-            />
-            <h2>Join a Lobby (PvP)</h2>
-          <img
-            className="img-fluid rounded mb-4 mb-lg-0"
-            src="http://placehold.it/900x400"
-            alt=""
-          />
-          <h2>Host a Lobby</h2>
-        <img
-          className="img-fluid rounded mb-4 mb-lg-0"
-          src="http://placehold.it/900x400"
-          alt=""
-        />
-          </div>
+              <Link className="nav-link" to="/single-player">
+                  <img
+                    className="img-fluid rounded mb-4 mb-lg-0"
+                    src="http://placehold.it/900x200"
+                    alt=""
+                    />
+                </Link>
+                <h2>Join a Lobby (PvP)</h2>
+                <Link className="nav-link" to="/lobbies">
+                    <img
+                    className="img-fluid rounded mb-4 mb-lg-0"
+                    src="http://placehold.it/900x200"
+                    alt=""
+                    />
+                </Link>
+                <h2>Host a Lobby</h2>
+                <Link className="nav-link" to="/lobbies">
+                    <img
+                    className="img-fluid rounded mb-4 mb-lg-0"
+                    src="http://placehold.it/900x200"
+                    alt=""
+                    />
+                </Link>
+                </div>
           <div className="col-lg-5 width-70">
             <h1 className="font-weight-light">What is Treevia?</h1>
             <p>

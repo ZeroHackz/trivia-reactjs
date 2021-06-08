@@ -75,7 +75,7 @@ class GlobalChatRight extends React.Component {
             hubConnection.on("ReceiveMessage", (object) => {
                 console.log("Message received");
                 console.log(object);
-                var objectSender = '-reactjs';
+                var objectSender = '-server';
                 if ('senderConnectionId' in object && object.senderConnectionId !== undefined) {
                     objectSender = object.senderConnectionId;
                 }
@@ -83,11 +83,16 @@ class GlobalChatRight extends React.Component {
                     objectSender = object.identity.name;
                 }
                 var objectMessage = object.message;
-                var senderName = "[]Client[" + objectSender + "]" + ": ";
-                var senderMsg = "Client[" + objectSender + "]" + ": " + objectMessage;
-                var chatSyntax = "Client[" + objectSender + "]" + ": " + objectMessage;
-                $('#msgs').prepend($('<div class="msg to"></div>').text(objectMessage));
-                $('#msgs').prepend($('<div class="chat-client"></div>').text(objectSender));
+                var objectTimestamp = object.timestamp;
+                var formatTimestamp = new Date(object.timestamp);
+                console.log("formated time stamp:");
+                console.log(formatTimestamp);
+                var chatSyntaxTimeSent = "@[" + formatTimestamp.toLocaleString() + "]";
+                var chatSyntaxSenderName = "Client[" + objectSender + "]" + " says : ";
+                var chatSyntaxMessage = objectMessage;
+                $('#msgs').append($('<div class="msg-timestamp"></div>').text(chatSyntaxTimeSent));
+                $('#msgs').append($('<div class="msg-sender"></div>').text(chatSyntaxSenderName));
+                $('#msgs').append($('<div class="msg to"></div>').text(chatSyntaxMessage));
             });
             // Define our send method.
             var _send_old_version = data => {

@@ -5,7 +5,7 @@ bordeauxish : #50434d
 goldish : #504c43
 greenish : #435046
 */
-.home, .contact, .about, .lobby-overview{
+.home, .single-player, .account-create, .lobby-host, .login, .about, .lobby-overview{
   float: left;
   width: 70%;
   height: 100vh;
@@ -464,5 +464,12 @@ HTML CSS JSResult Skip Results Iframe
 
 .card-body {
   background-color: #434750;
+
+}
+.msg-timestamp {
+  font-size: smaller;
+}
+.msg-sender {
+  font-size: smaller;
 
 }

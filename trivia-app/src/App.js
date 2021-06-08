@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, About, Contact, LobbyOverview, GlobalChat } from "./index.js";
+import { Navigation, Footer, Home, LobbyOverview, AccountCreate, LobbyHost, Login, SinglePlayer } from "./index.js";
 import GlobalChatRight from './Components/GlobalChatRight';
 const appHeader = (
   
@@ -23,10 +23,11 @@ function App() {
         <Navigation />
         <Switch>
           <Route path="/" exact component={() => <Home />} />
-          <Route path="/about" exact component={() => <About />} />
-          <Route path="/contact" exact component={() => <Contact />} />
+          <Route path="/single-player" exact component={() => <SinglePlayer />} />
+          <Route path="/lobby-host" exact component={() => <LobbyHost />} />
           <Route path="/lobbies" exact component={() => <LobbyOverview />} />
-          <Route path="/chat" exact component={() => <GlobalChat />} />
+          <Route path="/login" exact component={() => <Login />} />
+          <Route path="/acccount-create" exact component={() => <AccountCreate />} />
         </Switch>
         <GlobalChatRight />
         <Footer />
