@@ -23,10 +23,12 @@ class GlobalChatRight extends React.Component {
             <div id="global-chat" className="container">
             <div className="row">
                 <div className="col msg-window-container">
-                <div className="card" id="msgWindow">
-                    <div className="card-header"><span className="card-title">Chat with Customer Support Agent</span></div>
+                 
+                <div className="card" id="msgWindow"> 
+                {/* <div style={{color: 'black'}}>Global Chat</div> */}
+                    <div className="card-header"><span className="card-title">Chat within Global Chat</span></div>
                     <div className="card-body" id="msgs">
-                    <div className="msg to">Hello! How can I assist you today?</div>
+                    <div className=""><b>WELCOME TO GLOBAL CHAT</b></div>
                     </div>
                     <div className="card-footer">
                     <div className="input-group" id="msgForm" data-sender="me">
@@ -94,45 +96,7 @@ class GlobalChatRight extends React.Component {
                 $('#msgs').append($('<div class="msg-sender"></div>').text(chatSyntaxSenderName));
                 $('#msgs').append($('<div class="msg to"></div>').text(chatSyntaxMessage));
             });
-            // Define our send method.
-            var _send_old_version = data => {
-              // Send data to a new .msg
-              let $msg = $('<div class="msg"></div>'),
-              { sender, typing } = data;
-              if (sender !== "me") {
-                $msg.addClass("to");
-              } else {
-                $msg.addClass("from");
-              }
-              $msg.text(data.msg);
-              if (typing) $msg.addClass("typing");
-              $msg.appendTo($feed);
-              // If sending was successful, clear the text field.
-              $newMsg.val("");
-              // And simulate a reply from our agent.
-              if (sender === "me") setTimeout(_agentReply, 1000);
-              if (typing) return $msg; // ref to new DOM .msg
-            };
-          
-          
-          
-            var _agentReply = () => {
-              // After a few seconds, the agent starts to type a message.
-              let waitAfew = _wait(_secs(3000, 5000)),
-              showAgentTyping = async () => {
-                console.log("agent is typing...");
-                // Let the user know the agent is typing
-                let $agentMsg = _send({ msg: "Agent is typing...", typing: true, sender: false });
-                // and in a few seconds show the typed message.
-                waitAfew.then(() => {
-                  // @TODO: Simulate actual typing by removing the typing message when the agent isn't typing, and before the agent sends the typed message. Also allow typing to continue a number of times with breaks in between.
-                  $agentMsg.text("Lorem ipsum dolor sit amet.");
-                  $agentMsg.removeClass("typing");
-                });
-          
-              };
-              waitAfew.then(showAgentTyping());
-            };
+
           
             // Define event handlers: Hitting Enter or Send should send the form.
             $newMsg.on("keypress", function (e) {
