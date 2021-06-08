@@ -72,10 +72,10 @@ class SignalrGlobalChat extends React.Component {
         const signalrDomain = "https://i458461core.venus.fhict.nl/";   
         const signalrHub = "hubstandard";
         
-        if(this.dev) {
-            const signalrDomain = "https://localhost:5001/";
-            // const domain = "https://localhost:44324";
-        }
+        // if(this.dev) {
+        //     const signalrDomain = "https://localhost:5001/";
+        //     // const domain = "https://localhost:44324";
+        // }
 
         
         const hubConnection = new HubConnectionBuilder()

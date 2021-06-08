@@ -5,27 +5,6 @@ bordeauxish : #50434d
 goldish : #504c43
 greenish : #435046
 */
-.home, .contact, .about, .lobby-overview{
-  float: left;
-  width: 70%;
-  height: 100vh;
-  /* background-color: purple; */
-  
-}
-
-#global-chat {
- float: left;
- width: 30%;
- height: 100vh;
- /* max-height: 88vh; */
- overflow: hidden;
- /* background-color: sandybrown; */
-
-}
-
-html {
-  height: 100%;
-}
 body{
   background-color: #434750;
   color: whitesmoke;
@@ -51,11 +30,22 @@ img:hover{
 /**
  * CSS Identifiers
  */
+
+#main {
+  float: left;
+  width: 70%;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
+  background-color: purple;
+
+}
+
 #main-chat {
   float: left;
   width: 30%;
-  height: 88vh;
-  /* max-height: 88vh; */
+  height: 80vh;
+  max-height: 80vh;
   overflow: hidden;
   background-color: sandybrown;
 
@@ -391,78 +381,4 @@ label {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
-}
-
-/** GlobalChatRight **/
-HTML CSS JSResult Skip Results Iframe
-#msgWindow {
-  /* margin-top: 20px; */
-}
-
-#msgs {
-  margin: 0px 25px;
-  min-height: 70vh;
-  max-height: 70vh;
-  /* max-height: 210px; */
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.msg {
-  margin: 5px 0;
-  border: 1px solid silver;
-  padding: 3px 7px;
-  display: inline-block;
-  position: relative;
-  border-radius: 10px;
-}
-.msg::before, .msg::after {
-  content: "";
-  display: inline-block;
-  bottom: 0;
-  position: absolute;
-  border: 1px solid silver;
-}
-.msg::before {
-  right: -20px;
-  width: 15px;
-  height: 15px;
-  border-radius: 10px;
-}
-.msg::after {
-  right: -35px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-}
-.msg.from {
-  align-self: flex-end;
-}
-.msg.to {
-  align-self: flex-start;
-}
-.msg.to::before {
-  right: inherit;
-  left: -20px;
-}
-.msg.to::after {
-  right: inherit;
-  left: -35px;
-}
-.msg.typing {
-  color: silver;
-}
-
-#msgForm input:focus, #msgForm button:focus {
-  box-shadow: none;
-}
-
-
-.card-body {
-  background-color: #434750;
-
 }
