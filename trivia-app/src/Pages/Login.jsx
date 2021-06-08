@@ -8,7 +8,7 @@ function Login() {
           <div className="col-lg-7">
             <img
               className="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
+              src="https://plchldr.co/i/900x400?&bg=d37e00&fc=000&text=image_900x400"
               alt=""
             />
           </div>

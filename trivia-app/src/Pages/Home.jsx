@@ -12,7 +12,7 @@ function Home() {
               <Link className="nav-link" to="/single-player">
                   <img
                     className="img-fluid rounded mb-4 mb-lg-0"
-                    src="http://placehold.it/900x200"
+                    src="https://plchldr.co/i/900x200?&bg=d37e00&fc=000&text=image_900x200"
                     alt=""
                     />
                 </Link>
@@ -20,7 +20,7 @@ function Home() {
                 <Link className="nav-link" to="/lobbies">
                     <img
                     className="img-fluid rounded mb-4 mb-lg-0"
-                    src="http://placehold.it/900x200"
+                    src="https://plchldr.co/i/900x200?&bg=d37e00&fc=000&text=image_900x200"
                     alt=""
                     />
                 </Link>
@@ -28,7 +28,7 @@ function Home() {
                 <Link className="nav-link" to="/lobbies">
                     <img
                     className="img-fluid rounded mb-4 mb-lg-0"
-                    src="http://placehold.it/900x200"
+                    src="https://plchldr.co/i/900x200?&bg=d37e00&fc=000&text=image_900x200"
                     alt=""
                     />
                 </Link>
