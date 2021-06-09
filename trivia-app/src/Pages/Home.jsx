@@ -22,7 +22,7 @@ function Home() {
               </Link>
             </div>
             <div className="row justify-content-center">
-                <h5>Join a Lobby (PvP)</h5>
+                <h5>Join a 'Lobby' and test your skills against players (PvP)</h5>
                 <Link className="nav-link" to="/lobbies">
                     <img
                     className="img-fluid rounded mb-4 mb-lg-0"
@@ -32,7 +32,7 @@ function Home() {
                 </Link>
                 </div>
             <div className="row justify-content-center">
-                <h5>Host a Lobby</h5>
+                <h5>Create your own 'Lobby' and await new challengers</h5>
                 <Link className="nav-link" to="/lobby-host">
                     <img
                     className="img-fluid rounded mb-4 mb-lg-0"
