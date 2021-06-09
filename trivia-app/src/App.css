@@ -8,9 +8,17 @@ greenish : #435046
 .home, .single-player, .account-create, .lobby-host, .login, .about, .lobby-overview{
   float: left;
   width: 70%;
-  height: 100vh;
+  height: 98vh;
   /* background-color: purple; */
   
+}
+
+.main-icon {
+  border-radius: 50%;
+  max-width: 2vh;
+  max-height: 2vh;
+  height: 1vh;
+  width: 2vh;
 }
 
 #global-chat {
