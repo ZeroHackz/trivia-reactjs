@@ -1,4 +1,5 @@
 import React from "react";
+import bannerSinglePlayerMode from '../banner_darkmode_single_mode.png';
 import $ from 'jquery';
 
 class SinglePlayer extends React.Component {
@@ -41,7 +42,7 @@ class SinglePlayer extends React.Component {
   parseString(string) {
       return string.replace(/&#(?:x([\da-f]+)|(\d+));/g, function (_, hex, dec) {
         return String.fromCharCode(dec || +('0x' + hex))
-      });
+      }).replace(/&quot;/g, '\"');
   }
 
 
@@ -140,30 +141,33 @@ class SinglePlayer extends React.Component {
     <div className="single-player">
       <div className="container">
         <div className="row align-items-center my-5">
-          <div className="col-lg-5">
-            
+          <div className="col-lg-3">
             <div className="row">
                 <div id="answers_div">
-                <p className = "Score" style={{color: this.state.lastAns}}> LAST ANSWER </p>
+                <p className = "dashboard-header" > LAST ANSWER </p>
+                <p className = "dashboard-value" style={{color: this.state.lastAns}}>
+                  {this.state.lastAns == 'black' && '----'}
+                  {this.state.lastAns == 'green' && 'CORRECT'}
+                  {this.state.lastAns == 'red' && 'WRONG'}</p>
                 </div>
               </div>
               <div className="row">
-                <div className="score-header" >TOTAL SCORE </div>
+                <div className="dashboard-header" >TOTAL SCORE </div>
               </div>
               <div className="row">
-                <div className="score"  >: {this.state.score}</div>
+                <div className="dashboard-value score"  >: {this.state.score}</div>
               </div>
               <div className="row">
-                <div className="correct-header" >CORRECT</div>
+                <div className="dashboard-header" >CORRECT</div>
               </div>
               <div className="row">
-                <div className="correct"  >: {this.state.correctlyAnswered}</div>
+                <div className="dashboard-value correct"  >: {this.state.correctlyAnswered}</div>
               </div>
               <div className="row">
-                <div className="incorrect-header" >WRONG</div>
+                <div className="dashboard-header" >WRONG</div>
               </div>
               <div className="row">
-                <div className="incorrect"  >: {this.state.incorrectlyAnswered}</div>
+                <div className="dashboard-value incorrect"  >: {this.state.incorrectlyAnswered}</div>
               </div>
               <div className="row">
             
@@ -177,11 +181,11 @@ class SinglePlayer extends React.Component {
                 
               </div>
           </div>
-          <div className="col-lg-7">
+          <div className="col-lg-9">
             <div className="row">
             <img
               className="img-fluid rounded mb-4 mb-lg-0"
-              src="https://plchldr.co/i/900x100?&bg=d37e00&fc=000&text=image_900x400"
+              src={bannerSinglePlayerMode}
               alt=""
             /></div>
             <div className="row">
@@ -191,17 +195,19 @@ class SinglePlayer extends React.Component {
               <div id="timer"></div>
             </div>
             <div className="row">
+              <hr />
               <div id="question_div" >
               {this.state.loaded &&
-                <p className = "Question">{this.parseString(this.state.questions[this.state.qInd].question)}</p>
+                <p className = "question">{this.parseString(this.state.questions[this.state.qInd].question)}</p>
                 }
+                <hr />
               </div>
             </div>
             <div className="row">
               <div id="choices_div"  >
                 {this.state.loaded && this.state.questions[this.state.qInd].all_answers.map((answer, index) => (
-                  <div className="row d-grid gap-2 col-6 mx-auto">
-                    <div><button className="btn btn-primary"  type="button" key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{this.parseString(answer)}</button></div>
+                  <div className="row d-grid gap-2 col-6 mx-auto mt-2">
+                    <div><button className="btn question-answser"  type="button" key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{this.parseString(answer)}</button></div>
                   </div>
                 ))}
               </div>

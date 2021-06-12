@@ -1,9 +1,10 @@
 /*
 Color Pallette
-grayish  : 434750
-bordeauxish : #50434d
-goldish : #504c43
-greenish : #435046
+Charcoal  : #434750
+Portland Orange : #F46036
+Dark Sea Green : #87C38F
+Pale Spring Bud : #F4F0BB
+Cornflower Blue : #91A6FF
 */
 html {
   height: 100%;
@@ -130,6 +131,50 @@ img:hover{
   
 }
 
+/*
+Color Pallette
+Charcoal  : #434750
+Portland Orange : #F46036
+Dark Sea Green : #87C38F
+Pale Spring Bud : #F4F0BB
+Cornflower Blue : #91A6FF
+*/
+
+.dashboard-header {
+  font-size: 2.5vh;
+  font-weight: 400;
+  color: #91A6FF;
+}
+.dashboard-value {
+  font-size: 4.5vh;
+  font-weight: 600;
+  /* color: #F46036; */
+}
+
+.question {
+  font-size: 4.5vh;
+  font-weight: 700;
+  color: #87C38F ;
+}
+
+.question-answser{
+  font-size: 3.5vh;
+  font-weight: 700;
+  color: #F4F0BB ;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.5;
+
+}
+
+.question-answser:hover{
+  font-size: 4vh;
+  font-weight: 900;
+  color: #E8E073 ;
+  opacity: 1;
+
+}
+
 /* Transformations */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -211,8 +256,8 @@ HTML CSS JSResult Skip Results Iframe
 
 #msgs {
   margin: 0px 25px;
-  min-height: 70vh;
-  max-height: 70vh;
+  min-height: 80vh;
+  max-height: 80vh;
   /* max-height: 210px; */
   overflow-x: hidden;
   overflow-y: auto;

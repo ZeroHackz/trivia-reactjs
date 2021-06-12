@@ -5,7 +5,7 @@ function Navigation(props) {
   return (
     <div className="navigation">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <div className="container">
+        <div className="container-fluid">
             <Link className="navbar-brand" to="/">
             TREEVIA
             </Link>

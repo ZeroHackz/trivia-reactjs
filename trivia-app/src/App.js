@@ -16,11 +16,11 @@ const appFooter = (<div className="App-footer">Footer</div>);
 function App() {
   return (
     <div className="App">
+        <div class="container-fluid">
           <Router>
           <Navigation />
-        <div class="container-md">
           <div class="row">
-            <div class="col">
+            <div class="col-9">
               <Switch>
                 <Route path="/" exact component={() => <Home />} />
                 <Route path="/single-player" exact component={() => <SinglePlayer />} />
@@ -30,14 +30,13 @@ function App() {
                 <Route path="/acccount-create" exact component={() => <AccountCreate />} />
               </Switch>
             </div>
-            <div class="col">
+            <div class="col-3">
               <GlobalChatRight />
             </div>
           </div>
-      </div>
           </Router>
-      
       <Footer />
+      </div>
     </div>
   );
 }
