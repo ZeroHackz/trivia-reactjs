@@ -16,22 +16,28 @@ const appFooter = (<div className="App-footer">Footer</div>);
 function App() {
   return (
     <div className="App">
-      {/* { appHeader }
-      { appBody }
-      { appFooter } */}
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route path="/" exact component={() => <Home />} />
-          <Route path="/single-player" exact component={() => <SinglePlayer />} />
-          <Route path="/lobby-host" exact component={() => <LobbyHost />} />
-          <Route path="/lobbies" exact component={() => <LobbyOverview />} />
-          <Route path="/login" exact component={() => <Login />} />
-          <Route path="/acccount-create" exact component={() => <AccountCreate />} />
-        </Switch>
-        <GlobalChatRight />
-        <Footer />
-      </Router>
+          <Router>
+          <Navigation />
+        <div class="container-md">
+          <div class="row">
+            <div class="col">
+              <Switch>
+                <Route path="/" exact component={() => <Home />} />
+                <Route path="/single-player" exact component={() => <SinglePlayer />} />
+                <Route path="/lobby-host" exact component={() => <LobbyHost />} />
+                <Route path="/lobbies" exact component={() => <LobbyOverview />} />
+                <Route path="/login" exact component={() => <Login />} />
+                <Route path="/acccount-create" exact component={() => <AccountCreate />} />
+              </Switch>
+            </div>
+            <div class="col">
+              <GlobalChatRight />
+            </div>
+          </div>
+      </div>
+          </Router>
+      
+      <Footer />
     </div>
   );
 }

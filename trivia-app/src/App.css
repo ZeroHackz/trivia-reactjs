@@ -5,32 +5,6 @@ bordeauxish : #50434d
 goldish : #504c43
 greenish : #435046
 */
-.home, .single-player, .account-create, .lobby-host, .login, .about, .lobby-overview{
-  float: left;
-  width: 70%;
-  height: 98vh;
-  /* background-color: purple; */
-  
-}
-
-.main-icon {
-  border-radius: 50%;
-  max-width: 2vh;
-  max-height: 2vh;
-  height: 1vh;
-  width: 2vh;
-}
-
-#global-chat {
- float: left;
- width: 30%;
- height: 100vh;
- /* max-height: 88vh; */
- overflow: hidden;
- /* background-color: sandybrown; */
-
-}
-
 html {
   height: 100%;
 }
@@ -38,16 +12,7 @@ body{
   background-color: #434750;
   color: whitesmoke;
 }
-button {
-    color: orange;
-    background-color: #50434d;
-    padding: 1px;
-}
-button:hover {
-    color: white;
-    background-color: #50434d;
-    padding: 1px;
-}
+
 img{
   opacity: 0.5;
 }
@@ -59,143 +24,25 @@ img:hover{
 /**
  * CSS Identifiers
  */
-#main-chat {
-  float: left;
-  width: 30%;
-  height: 88vh;
-  /* max-height: 88vh; */
+
+#global-chat {
+
   overflow: hidden;
-  background-color: sandybrown;
-
-}
-
-#main-list {
-  width: 100%;
-  height:100%;
-  margin: 0;
-  padding: 0;
-  background-color: #767980;
-  list-style-type: none;  
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: center;
-}
-
-#room-chatbox-broadcast {
-  
-}
-
-#room-chatbox-panel{
-  font-weight: 500;
-  color: darkslateblue;
-  background-color: #eeeeee;
-  max-height: 70vh;
-  height: 70vh;
-  white-space: pre !important;
-  word-wrap: normal !important;
-  word-break: normal !important;
-  height: auto;
-  overflow: auto;
-}
-
-#room-signalr-message-panel{
-  height: 70vh;
-  max-height: 70vh;
-}
-
-#top-chat {
-  float: left;
-  overflow: hidden;
-  width: 60%;
-  height: 16vh;
-}
-
-#top-chatbox-img{
-  float: left;
-  overflow: hidden;
-  max-width: 20%;
-  height: 13vh;
-  margin: auto;
-  display: block;
-}
-
-#top-chat img{
-  
-  object-fit: initial ;
-  /* opacity: 1; */
-  /* float: left; */
-  /* max-width: 20%; */
-  /* height: 13vh; */
-  max-height: 12vh;
-}
-#top-chat img:hover{
-}
-#top-chatbox{
-  background-color: #435046;
-  float: left;
-  overflow: hidden;  
-  width: 80%;
-  height: 13vh;
-}
-#top-chatbox-broadcast{
-  float: left;
-  width: 20%;
-  height: 3vh;
-  align-self: center;
-  align-content: center;
-  text-align: center;
-  padding-top:0.1vh;
-}
-#top-chatbox-broadcast button{
-  align-self: center;
-  align-content: center;
-  text-align: center;
-}
-#top-chatbox-input{
-  float: left;
-  width: 80%;
-  height: 3vh;
-}
-#top-chatbox-input input{
-  padding-right:5%;
-  width:95%;
-  height: 100%;
-}
-#top-chatbox-panel{
-  font-weight: 500;
-  color: darkslateblue;
-  background-color: #eeeeee;
-  max-height: 10vh;
-  height: 10vh;
-  white-space: pre !important;
-  word-wrap: normal !important;
-  word-break: normal !important;
-  height: auto;
-  overflow: auto;
-}
-#top-chatbox-panel-welcome{
-  font-weight: 700;
-  color: darkslateblue;
-  background-color: white;
-}
-#top-navigation{
-  /* background-color: #61dafb; */
-  float: left;
-	overflow: hidden;
-  width: 100%;
-  height: 3vh;
-  
-}
-#top-settings {
-  overflow: hidden;
-  width: 40%;
-  height: 16vh;
-}
-
+ 
+ }
+ 
 
 /**
  * CSS CLasses
  */
+
+.home, .single-player, .account-create, .lobby-host, .login, .about, .lobby-overview{
+  /* float: left;
+  width: 70%; */
+  /* height: 98vh; */
+  /* background-color: purple; */
+  
+}
 
 .App {
   text-align: center;
@@ -205,18 +52,6 @@ img:hover{
 .App-logo {
   height: 5vmin;
   pointer-events: none;
-}
-
-.banner-top
-{
-  background-color: #92480b;
-  min-height: 3vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 1vmin);
-  color: rgb(189, 189, 189);
 }
 
 .App-header {
@@ -295,34 +130,6 @@ img:hover{
   
 }
 
-.top-navigation-link{
-  
-  float:left;
-  margin: 0;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  width: 20%;
-  height: 100%;
-  
-  align-self: center;
-  align-content: center;
-  text-align: center;
-}
-
-.top-settings-option {
-  float:left;
-  margin: 0;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  width: 20%;
-  height: 100%;
-  
-  align-self: center;
-  align-content: center;
-  text-align: center;
-
-}
-
 /* Transformations */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -358,11 +165,6 @@ img:hover{
 
 label {
   width:100px;
-}
-
-#signalr-message-panel {
-/*   height: calc(100vh - 200px);
- */
 }
 
 

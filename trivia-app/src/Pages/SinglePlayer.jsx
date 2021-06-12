@@ -198,9 +198,11 @@ class SinglePlayer extends React.Component {
               </div>
             </div>
             <div className="row">
-              <div id="choices_div" >
+              <div id="choices_div"  >
                 {this.state.loaded && this.state.questions[this.state.qInd].all_answers.map((answer, index) => (
-                  <button key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{this.parseString(answer)}</button>
+                  <div className="row d-grid gap-2 col-6 mx-auto">
+                    <div><button className="btn btn-primary"  type="button" key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{this.parseString(answer)}</button></div>
+                  </div>
                 ))}
               </div>
             </div>
