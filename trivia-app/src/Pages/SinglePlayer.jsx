@@ -200,7 +200,7 @@ class SinglePlayer extends React.Component {
             <div className="row">
               <div id="choices_div" >
                 {this.state.loaded && this.state.questions[this.state.qInd].all_answers.map((answer, index) => (
-                  <button key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{answer}</button>
+                  <button key = {index} onClick = {(e) => this.handlePrsdAPI(e, index)}>{this.parseString(answer)}</button>
                 ))}
               </div>
             </div>
