@@ -42,7 +42,13 @@ class SinglePlayer extends React.Component {
   parseString(string) {
       return string.replace(/&#(?:x([\da-f]+)|(\d+));/g, function (_, hex, dec) {
         return String.fromCharCode(dec || +('0x' + hex))
-      }).replace(/&quot;/g, '\"');
+      })
+      .replace(/&quot;/g, '\"')
+      .replace(/&lt;;/g, '\<')
+      .replace(/&gt;/g, '\>')
+      .replace(/&le;/g, '\≤')
+      .replace(/&ge;/g, '\≥')
+      ;
   }
 
 
@@ -54,8 +60,8 @@ class SinglePlayer extends React.Component {
   loadQuestionsAPI = async () => {
     console.log('starting loadQuestionsAPI()');
     fetch(this.state.url).then(response => response.json()).then(data => {
-      console.log('data.results');
-      console.log(data.results );
+      // console.log('data.results');
+      // console.log(data.results );
       data.results.forEach(dataResult => {
           if(!("all_answers" in dataResult)){
             dataResult.all_answers = this.shuffleAllQuestionsAnswers(dataResult.incorrect_answers, dataResult.correct_answer);

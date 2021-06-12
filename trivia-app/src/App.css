@@ -168,8 +168,8 @@ Cornflower Blue : #91A6FF
 }
 
 .question-answser:hover{
-  font-size: 4vh;
-  font-weight: 900;
+  /* font-size: 4vh; */
+  font-weight: 750;
   color: #E8E073 ;
   opacity: 1;
 
