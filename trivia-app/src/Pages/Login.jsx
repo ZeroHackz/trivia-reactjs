@@ -2,15 +2,28 @@ import React from "react";
 
 function Login() {
   return (
-    <div className="about">
+    <div className="login">
       <div className="container">
         <div className="row align-items-center my-5">
           <div className="col-lg-7">
-            <img
-              className="img-fluid rounded mb-4 mb-lg-0"
-              src="https://plchldr.co/i/900x400?&bg=d37e00&fc=000&text=image_900x400"
-              alt=""
-            />
+            <form>
+              <h1 class="h3  mb-3 fw-normal">Sign-in</h1>
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+                <label for="floatingPassword">Password</label>
+              </div>
+
+              <div class="checkbox mb-3 ">
+                <label><input type="checkbox" value="remember-me" /> Save</label>
+              </div>
+              <button class="w-100 btn btn-lg btn-warning" type="submit">Sign in</button>
+              <p class="mt-5  mb-3 text-muted">No account? Create one <a href="#">here</a></p>
+            </form>
+
           </div>
           <div className="col-lg-5">
             <h1 className="font-weight-light">Sign-in with your account</h1>

@@ -1,14 +1,15 @@
 import React from "react";
+import bannerHostMode from '../banner_host_sprout_1.png';
 
 function LobbyHost() {
   return (
-    <div className="about">
+    <div className="lobby-host">
       <div className="container">
         <div className="row align-items-center my-5">
           <div className="col-lg-7">
             <img
               className="img-fluid rounded mb-4 mb-lg-0"
-              src="https://plchldr.co/i/900x400?&bg=d37e00&fc=000&text=image_900x400"
+              src={bannerHostMode}
               alt=""
             />
           </div>
