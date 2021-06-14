@@ -124,12 +124,13 @@ Cornflower Blue : #91A6FF
   height: 90%;
   /* margin-right: 5%;
   margin-left: 5%; */
-  opacity: 0.5;
+  opacity: 0.95;
   
 }
 
 .main-list-item-panel:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .main-list-item-panel-label {

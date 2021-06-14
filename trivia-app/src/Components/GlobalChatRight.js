@@ -13,7 +13,7 @@ class GlobalChatRight extends React.Component {
             logLevel :null,
             loggedIn : true,
             hubConnectionMessage: '',     
-            dev : true,              
+            dev : false,              
         };
     }
     
