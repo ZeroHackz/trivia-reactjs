@@ -49,11 +49,11 @@ class GlobalChatRight extends React.Component {
     componentDidMount() {//mount component resources
         let signalrDomain = "singlr-domain";  
 
-        if(this.dev){
+        // if(this.dev){
             signalrDomain = "https://i458461core.venus.fhict.nl/";  
-        } else {
-            signalrDomain = "https://localhost:44324/";
-        }   
+        // } else {
+        //     signalrDomain = "https://localhost:44324/";
+        // }   
         const signalrHub = "globalchat";
         const hubConnection = new HubConnectionBuilder()
                                 .withUrl(signalrDomain+signalrHub, { accessTokenFactory: () => this.loginToken })

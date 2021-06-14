@@ -58,7 +58,7 @@ class SinglePlayer extends React.Component {
     return returnArray.sort(() => Math.random() - 0.5);
   }
   loadQuestionsAPI = async () => {
-    console.log('starting loadQuestionsAPI()');
+    //console.log('starting loadQuestionsAPI()');
     fetch(this.state.url).then(response => response.json()).then(data => {
       // console.log('data.results');
       // console.log(data.results );
@@ -77,7 +77,7 @@ class SinglePlayer extends React.Component {
     });
   }
   loadQuestions = async () => {
-    console.log('starting loadQuestions()');
+    // console.log('starting loadQuestions()');
     fetch(this.state.url).then(response => response.json()).then(data => {
       data.results.forEach(dataResult => {
           if(!("all_answers" in dataResult)){
@@ -109,8 +109,8 @@ class SinglePlayer extends React.Component {
    }
     
    handlePrsdAPI = (e, ans) => {
-       console.log(this.state.questions[this.state.qInd].all_answers[ans]);
-       console.log("This is : "+ (this.state.questions[this.state.qInd].correct_answer == this.state.questions[this.state.qInd].all_answers[ans]));
+      //  console.log(this.state.questions[this.state.qInd].all_answers[ans]);
+      //  console.log("This is : "+ (this.state.questions[this.state.qInd].correct_answer == this.state.questions[this.state.qInd].all_answers[ans]));
        e.preventDefault()
 
        if(this.state.questions[this.state.qInd].correct_answer == this.state.questions[this.state.qInd].all_answers[ans]) {
