@@ -82,8 +82,8 @@ class GlobalChatRight extends React.Component {
               $newMsg.val(""); // If sending was successful, clear the text field.
             };
             hubConnection.on("ReceiveMessage", (object) => {
-                console.log("Message received");
-                console.log(object);
+                // console.log("Message received");
+                // console.log(object);
                 var objectSender = '-server';
                 if ('senderConnectionId' in object && object.senderConnectionId !== undefined) {
                     objectSender = object.senderConnectionId;
@@ -94,8 +94,8 @@ class GlobalChatRight extends React.Component {
                 var objectMessage = object.message;
                 var objectTimestamp = object.timestamp;
                 var formatTimestamp = new Date(object.timestamp);
-                console.log("formated time stamp:");
-                console.log(formatTimestamp);
+                // console.log("formated time stamp:");
+                // console.log(formatTimestamp);
                 var chatSyntaxTimeSent = "@[" + formatTimestamp.toLocaleString() + "]";
                 var chatSyntaxSenderName = "Client[" + objectSender + "]" + " says : ";
                 var chatSyntaxMessage = objectMessage;
