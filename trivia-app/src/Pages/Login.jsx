@@ -16,9 +16,9 @@ class Login extends React.Component {
       
   }
   render() {
-    if(this.apiResponse != "") {
-      console.log("apiResponse");
-      console.log(this.apiResponse);
+    if(this.apiResponse != "" && this.apiResponse != undefined ) {
+      // console.log("apiResponse");
+      // console.log(this.apiResponse);
       if(this.loggedIn == true){
         Redirect("/");
       }
