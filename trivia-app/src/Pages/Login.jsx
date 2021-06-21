@@ -54,11 +54,11 @@ class Login extends React.Component {
               <h1 className="h3  mb-3 fw-normal">Sign-in</h1>
                 <label htmlFor="accountEmail">Email address</label>
               <div className="form-floating">
-                <input type="email" className="form-control" id="accountEmail" placeholder="name@example.com" />
+                <input type="email" className="form-control" id="accountEmail"  ref="AccountEmail" placeholder="name@example.com" />
               </div>
                 <label htmlFor="accountPassword">Password</label>
               <div className="form-floating">
-                <input type="password" className="form-control" id="accountPassword" placeholder="Password" />
+                <input type="password" className="form-control" id="accountPassword" ref="AccountPassword" placeholder="Password" />
               </div>
               <div className="checkbox mb-3 ">
                 <label><input type="checkbox" value="remember-me" /> Save</label>
@@ -123,9 +123,9 @@ class Login extends React.Component {
   
   signIn=()=>{
     let loginAccount={
-          Email:this.refs.Email.value,
+          Email:this.refs.AccountEmail.value,
           Username: "",
-          Password:this.refs.Password.value,
+          Password:this.refs.AccountPassword.value,
         };
   
         fetch(
