@@ -1,11 +1,14 @@
 import React from "react";
 import $ from 'jquery';
+import { Redirect } from "react-router";
 
 class Login extends React.Component {
   constructor(props){//constructor
       super(props);//super class props
       this.state = { //initial state
-        createNewAccount: true,
+        createNewAccount: false,
+        loggedIn: true,
+        apiResponse : "",
         today: new Date(),
       };
 
@@ -13,6 +16,14 @@ class Login extends React.Component {
       
   }
   render() {
+    if(this.apiResponse != "") {
+      console.log("apiResponse");
+      console.log(this.apiResponse);
+      if(this.loggedIn == true){
+        Redirect("/");
+      }
+    }
+
     return (<div className="login">
       <div className="container">
         <div className="row align-items-center my-5">
@@ -20,43 +31,42 @@ class Login extends React.Component {
           { 
               this.state.createNewAccount
             ? 
-              <div>
-                <h2>Create a new Account!</h2>
-                <p>
-                  <label>Account ID : <input type="text"  ref="Id" value="new" disabled ></input></label>
-                </p>
-                <p>
-                  <label>Please enter your e-mail : <input placeholder="E-mail" type="email" ref="Email"></input></label>
-                </p>
-                <p>
-                  <label>Enter an account username : <input placeholder="Username" type="text" ref="Username"></input></label>
-                </p>
-                <p>
-                  <label>Use a secure password : <input placeholder="Password" type="password" ref="Password"></input></label>
-                </p>
-                <p>
-                  <label>Creation date:<input type="text" ref="CreatedAt" value={ this.state.today.toISOString() } disabled ></input></label>
-                </p>
+              
+            <form>
+                <h1 className="h3  mb-3 fw-normal">Create a new Account !</h1>
+                <label htmlFor="newAccountInput">Email address</label>
+              <div className="form-floating">
+                <input type="email" className="form-control" ref="Email" id="newAccountEmail"placeholder="name@example.com" />
               </div>
+                <label htmlFor="newAccountUsername">Username</label>
+              <div className="form-floating">
+                <input type="text" className="form-control" ref="Username" id="newAccountUsername" placeholder="Username" />
+              </div>
+                <label htmlFor="newAccountPassword">Password</label>
+              <div className="form-floating">
+                <input type="password" className="form-control" ref="Password" id="newAccountPassword" placeholder="Password" />
+              </div>
+              <hr></hr>
+              <button className="w-100 btn btn-lg btn-warning" onClick={this.createNewAccount}>Create</button>
+              </form>
             :
             <form>
-              <h1 class="h3  mb-3 fw-normal">Sign-in</h1>
-              <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-                <label for="floatingInput">Email address</label>
+              <h1 className="h3  mb-3 fw-normal">Sign-in</h1>
+                <label htmlFor="accountEmail">Email address</label>
+              <div className="form-floating">
+                <input type="email" className="form-control" id="accountEmail" placeholder="name@example.com" />
               </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-                <label for="floatingPassword">Password</label>
+                <label htmlFor="accountPassword">Password</label>
+              <div className="form-floating">
+                <input type="password" className="form-control" id="accountPassword" placeholder="Password" />
               </div>
-
-              <div class="checkbox mb-3 ">
+              <div className="checkbox mb-3 ">
                 <label><input type="checkbox" value="remember-me" /> Save</label>
               </div>
-              <button class="w-100 btn btn-lg btn-warning" type="submit">Sign in</button>
+              <button className="w-100 btn btn-lg btn-warning" onClick={this.signIn}>Sign in</button>
             </form>
           }
-          <p class="mt-5  mb-3 text-muted">{ this.state.createNewAccount
+          <p className="mt-5  mb-3 text-muted">{ this.state.createNewAccount
               ? 'Already have one account? Sign-in'
               :'No account? Create one'} <a href="#" onClick={this.toggleLayoutLogin}>here</a></p>
           </div>
@@ -79,36 +89,68 @@ class Login extends React.Component {
       createNewAccount: !this.state.createNewAccount,   
      });
   }
-
-createAccount(account){
   
-  fetch(
-    {
-      "Id":"naisu",
-      "Email":"testemail@testemail.com",
-      "Username":"bob",
-      "Password":"bob",
-      "LastLogin":"2019-01-19T19:51:00",
-      "CreatedAt":"2021-04-07T17:51:00"
-    }, 
-    {
-    method: 'POST',
-    body: JSON.stringify({
-      title: 'New title added',
-      body: 'New body added. Hello body.',
-      userId: 2
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  }).then(response => {
-      return response.json()
-    }).then(json => {
-      this.setState({
-        user:json
-      });
-    });
+  createNewAccount=()=>{
+    let newAccount={
+      Email:this.refs.Email.value,
+      Username:this.refs.Username.value,
+      Password:this.refs.Password.value,
+    };
+  
+    fetch(
+      "https://localhost:44324/Accounts/CreateJson", 
+      {
+        method: 'POST',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(newAccount),
+      }
+    )
+    .then(
+      response => {
+        return response.json()
+      }
+    )
+    .then(
+      json => {
+        this.setState({
+          apiResponse : json
+        });
+      }
+    );
   }
+  
+  signIn=()=>{
+    let loginAccount={
+          Email:this.refs.Email.value,
+          Username: "",
+          Password:this.refs.Password.value,
+        };
+  
+        fetch(
+          "https://localhost:44324/Accounts/SignIn", 
+          {
+            method: 'POST',
+            headers: {
+              "Content-type": "application/json"
+            },
+            body: JSON.stringify(loginAccount),
+          }
+        )
+        .then(
+          response => {
+            return response.json();
+          }
+        )
+        .then(
+          json => {
+            this.setState({
+              apiResponse : json
+            });
+          }
+        );
+    }
 
   componentDidMount() {
   }
