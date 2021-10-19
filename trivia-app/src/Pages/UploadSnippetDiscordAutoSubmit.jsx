@@ -12,7 +12,7 @@ function UploadSnippetDiscordAutoSubmit() {
   }
 
   const getUploadParams = () => {
-    return { url: 'https://httpbin.org/post' }
+    return { url: 'https://httpbin.org/anything' }
   }
 
   const handleChangeStatus = ({ meta, remove }, status) => {
@@ -32,7 +32,7 @@ function UploadSnippetDiscordAutoSubmit() {
         maxFiles={1}
         multiple={false}
         canCancel={false}
-        accept="image/*,audio/*,*"
+        accept="image/*,audio/*"
         inputContent="Drop A File For The Discord Bot!!"
         styles={{
           dropzone: { width: 720, height: 220 },
