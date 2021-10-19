@@ -6,7 +6,7 @@ function Footer() {
       <footer className="py-2 bg-dark rounded-bottom">
         <div className="container-fluid">
           <p className="m-0 text-center text-white">
-            AD-ICT FHICT Semester 3 &copy; Treevia 2021
+           <a href="https://github.com/exosfeer">Developer Exosfeer</a> &copy; Treevia 2021
           </p>
         </div>
       </footer>

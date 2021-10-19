@@ -31,6 +31,15 @@ function Navigation(props) {
               </li>
               <li
                 className={`nav-item  ${
+                  props.location.pathname === "/upload-snippet-discord" ? "active" : ""
+                }`}
+              >
+                <Link className="nav-link" to="/upload-snippet-discord">
+                  Upload Snippet [DiscordBot]
+                </Link>
+              </li>
+              {/* <li
+                className={`nav-item  ${
                   props.location.pathname === "/lobbies" ? "active" : ""
                 }`}
               >
@@ -55,7 +64,7 @@ function Navigation(props) {
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
