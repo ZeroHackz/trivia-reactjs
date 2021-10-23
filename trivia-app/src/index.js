@@ -12,14 +12,8 @@ import Dropzone from 'react-dropzone-uploader';
 export { default as Navigation } from "./Pages/Navigation";
 export { default as Footer } from "./Pages/Footer";
 export { default as Home } from "./Pages/Home";
-export { default as About } from "./Pages/About";
 export { default as Contact } from "./Pages/Contact";
-export { default as LobbyOverview } from "./Pages/LobbyOverview";
-export { default as UploadSnippetDiscord } from "./Pages/UploadSnippetDiscord";
 export { default as UploadSnippetDiscordAutoSubmit } from "./Pages/UploadSnippetDiscordAutoSubmit";
-export { default as LobbyHost } from "./Pages/LobbyHost";
-export { default as AccountCreate } from "./Pages/AccountCreate";
-export { default as Login } from "./Pages/Login";
 export { default as SinglePlayer } from "./Pages/SinglePlayer";
   
 ReactDOM.render(

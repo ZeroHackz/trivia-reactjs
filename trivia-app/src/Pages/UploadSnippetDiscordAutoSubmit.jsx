@@ -1,5 +1,4 @@
 import React from "react";
-import bannerHostMode from '../banner_host_sprout_1.png';
 import 'react-dropzone-uploader/dist/styles.css';
 import Dropzone from 'react-dropzone-uploader';
 
@@ -12,7 +11,7 @@ function UploadSnippetDiscordAutoSubmit() {
   }
 
   const getUploadParams = () => {
-    return { url: 'https://httpbin.org/anything' }
+    return { url: 'https://ebeningbot.herokuapp.com/api/v1/sounds' }
   }
 
   const handleChangeStatus = ({ meta, remove }, status) => {

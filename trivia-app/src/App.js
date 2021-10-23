@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, LobbyOverview, AccountCreate, LobbyHost, Login, SinglePlayer, UploadSnippetDiscord, UploadSnippetDiscordAutoSubmit } from "./index.js";
+import { Navigation, Footer, Home,  LobbyHost,  SinglePlayer , UploadSnippetDiscordAutoSubmit } from "./index.js";
 import GlobalChatRight from './Components/GlobalChatRight';
 import 'react-dropzone-uploader/dist/styles.css';
 import Dropzone from 'react-dropzone-uploader';
@@ -26,11 +26,7 @@ function App() {
               <Switch>
                 <Route path="/" exact component={() => <Home />} />
                 <Route path="/single-player" exact component={() => <SinglePlayer />} />
-                <Route path="/lobby-host" exact component={() => <LobbyHost />} />
                 <Route path="/upload-snippet-discord" exact component={() => <UploadSnippetDiscordAutoSubmit />} />
-                {/* <Route path="/lobbies" exact component={() => <LobbyOverview />} />
-                <Route path="/login" exact component={() => <Login />} />
-                <Route path="/acccount-create" exact component={() => <AccountCreate />} /> */}
               </Switch>
             </div>
             <div className="col-3">

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import bannerSinglePlayer from '../banner_darkmode_single.png';
-import bannerMultiPlayer from '../banner_darkmode_multi.png';
+import bannerSnippetUpload from '../upload_snippet_discord.png';
 import bannerHostPlayer from '../banner_darkmode_host.png';
 
 function Home() {
@@ -22,12 +22,12 @@ function Home() {
               </Link>
             </div>
             <div className="row justify-content-center">
-                <h5>Join a 'Lobby' and test your skills against players (PvP)</h5>
-                <Link className="nav-link" to="/lobbies">
+                <h5>Upload a snippet to the discord bot!</h5>
+                <Link className="nav-link" to="/upload-snippet-discord">
                     <img
                     className="img-fluid rounded mb-4 mb-lg-0"
-                    src={bannerMultiPlayer}
-                    alt="bannerMultiPlayer"
+                    src={bannerSnippetUpload}
+                    alt="bannerSnippetUpload"
                     />
                 </Link>
                 </div>
